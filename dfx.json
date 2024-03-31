@@ -5,6 +5,12 @@
       "source": [
         "dist"
       ]
+    },
+    "eco_legacy": {
+      "main": "src/main.rs",
+      "type": "custom",
+      "candid": "src/eco_legacy.did",
+      "wasm": "eco_legacy.wasm"
     }
   },
   "networks": {
@@ -16,6 +22,11 @@
       "providers": [
         "https://mainnet.dfinity.network"
       ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "@dfinity/webpack-plugin"
     }
   },
   "version": 1
