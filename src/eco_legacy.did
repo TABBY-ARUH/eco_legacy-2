@@ -1,0 +1,5 @@
+service : {
+  get_projects: () -> (vec SustainabilityProject, text);
+  addProject: (nat, text, text) -> (bool, text);
+};
+

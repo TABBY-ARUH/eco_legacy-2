@@ -1,0 +1,4 @@
+service : {
+  getProjects: () -> (vec nat, text);
+  addProject: (nat, text, text) -> (bool, text);
+};
