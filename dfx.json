@@ -10,7 +10,8 @@
       "main": "src/main.rs",
       "type": "custom",
       "candid": "src/eco_legacy.did",
-      "wasm": "eco_legacy.wasm"
+      "wasm": "eco_legacy.wasm",
+      "package": "eco_legacy"
     }
   },
   "networks": {
@@ -26,8 +27,10 @@
   },
   "defaults": {
     "build": {
-      "packtool": "@dfinity/webpack-plugin"
+      "packtool": "@dfinity/webpack-plugin",
+      "args": ""
     }
   },
+  "output_env_file": ".env",
   "version": 1
 }
