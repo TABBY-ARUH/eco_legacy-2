@@ -52,3 +52,40 @@ fn add_project(project: SustainabilityProject) {
 //     let mut eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
 //     eco_legac
 // }
+impl EcoLegacy {
+    // Existing functions
+
+    pub fn update_project(&mut self, id: u32, updated_project: SustainabilityProject) -> Result<(), String> {
+        // Find the project with the given ID
+        if let Some(project) = self.projects.iter_mut().find(|p| p.id == id) {
+            // Update the project's details
+            *project = updated_project;
+            Ok(())
+        } else {
+            Err("Project not found".to_string())
+        }
+    }
+
+    pub fn delete_project(&mut self, id: u32) -> Result<(), String> {
+        // Find the index of the project with the given ID
+        if let Some(index) = self.projects.iter().position(|p| p.id == id) {
+            // Remove the project from the vector
+            self.projects.remove(index);
+            Ok(())
+        } else {
+            Err("Project not found".to_string())
+        }
+    }
+}
+
+#[update]
+fn update_project(id: u32, updated_project: SustainabilityProject) -> Result<(), String> {
+    let mut eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
+    eco_legacy.update_project(id, updated_project)
+}
+
+#[update]
+fn delete_project(id: u32) -> Result<(), String> {
+    let mut eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
+    eco_legacy.delete_project(id)
+}
