@@ -29,31 +29,6 @@ impl EcoLegacy {
     pub fn add_project(&mut self, project: SustainabilityProject) {
         self.projects.push(project);
     }
-}
-
-lazy_static! {
-    static ref ECO_LEGACY_INSTANCE: Mutex<EcoLegacy> = Mutex::new(EcoLegacy::new());
-}
-
-#[query]
-fn get_projects() -> Vec<SustainabilityProject> {
-    let eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
-    eco_legacy.get_projects()
-}
-
-#[update]
-fn add_project(project: SustainabilityProject) {
-    let mut eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
-    eco_legacy.add_project(project);
-}
-
-// #[init]
-// fn canister_init() {
-//     let mut eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
-//     eco_legac
-// }
-impl EcoLegacy {
-    // Existing functions
 
     pub fn update_project(&mut self, id: u32, updated_project: SustainabilityProject) -> Result<(), String> {
         // Find the project with the given ID
@@ -76,6 +51,52 @@ impl EcoLegacy {
             Err("Project not found".to_string())
         }
     }
+
+    pub fn get_project_by_id(&self, id: u32) -> Option<SustainabilityProject> {
+        self.projects.iter().find(|p| p.id == id).cloned()
+    }
+
+    pub fn filter_projects_by_name(&self, name: String) -> Vec<SustainabilityProject> {
+        self.projects.iter().filter(|p| p.name == name).cloned().collect()
+    }
+
+    pub fn get_project_count(&self) -> usize {
+        self.projects.len()
+    }
+}
+
+lazy_static! {
+    static ref ECO_LEGACY_INSTANCE: Mutex<EcoLegacy> = Mutex::new(EcoLegacy::new());
+}
+
+#[query]
+fn get_projects() -> Vec<SustainabilityProject> {
+    let eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
+    eco_legacy.get_projects()
+}
+
+#[query]
+fn get_project_by_id(id: u32) -> Option<SustainabilityProject> {
+    let eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
+    eco_legacy.get_project_by_id(id)
+}
+
+#[query]
+fn filter_projects_by_name(name: String) -> Vec<SustainabilityProject> {
+    let eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
+    eco_legacy.filter_projects_by_name(name)
+}
+
+#[query]
+fn get_project_count() -> usize {
+    let eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
+    eco_legacy.get_project_count()
+}
+
+#[update]
+fn add_project(project: SustainabilityProject) {
+    let mut eco_legacy = ECO_LEGACY_INSTANCE.lock().unwrap();
+    eco_legacy.add_project(project);
 }
 
 #[update]
