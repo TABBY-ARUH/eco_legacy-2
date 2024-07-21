@@ -3,7 +3,7 @@ import { View, Button, StyleSheet, ImageBackground } from 'react-native';
 
 export default function MainScreen({ navigation }) {
   return (
-    <ImageBackground source={require('../assets/background.jpg')} style={styles.background}>
+    <ImageBackground source={require('')} style={styles.background}>
       <View style={styles.container}>
         <Button title="Project" onPress={() => navigation.navigate('Project')} />
         <Button title="Chatbot" onPress={() => navigation.navigate('Chat')} />
