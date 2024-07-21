@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 
 export default function ProjectScreen() {
   return (
-    <ImageBackground source={require('../assets/background.jpg')} style={styles.background}>
+    <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.container}>
         <Text style={styles.title}>Explore Sustainability Projects</Text>
         <Text style={styles.description}>Search Year</Text>

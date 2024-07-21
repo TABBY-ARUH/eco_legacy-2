@@ -1,13 +1,33 @@
 import React from 'react';
-import { View, Button, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 
 export default function MainScreen({ navigation }) {
   return (
-    <ImageBackground source={require('')} style={styles.background}>
-      <View style={styles.container}>
-        <Button title="Project" onPress={() => navigation.navigate('Project')} />
-        <Button title="Chatbot" onPress={() => navigation.navigate('Chat')} />
-        <Button title="Translation" onPress={() => navigation.navigate('Translation')} />
+    <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
+      <View style={styles.overlay}>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Project')}>
+            <FontAwesome5 name="project-diagram" size={24} color="white" />
+            <Text style={styles.buttonText}>Project</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Chat')}>
+            <MaterialIcons name="chat" size={24} color="white" />
+            <Text style={styles.buttonText}>Chatbot</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Translation')}>
+            <MaterialIcons name="translate" size={24} color="white" />
+            <Text style={styles.buttonText}>Translation</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.footer}>
+          <TouchableOpacity style={styles.footerButton} onPress={() => {}}>
+            <Text style={styles.footerButtonText}>Explore App</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerButton} onPress={() => {}}>
+            <Text style={styles.footerButtonText}>Download</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ImageBackground>
   );
@@ -19,9 +39,46 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container: {
-    padding: 20,
+  overlay: {
+    flex: 1,
+    width: '100%',
     backgroundColor: 'rgba(0,0,0,0.5)',
-    borderRadius: 10,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#003f5c',
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 25,
+    marginVertical: 10,
+    width: '80%',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    marginLeft: 10,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 40,
+  },
+  footerButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+  },
+  footerButtonText: {
+    fontSize: 16,
+    color: '#000',
   },
 });

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 
 export default function ChatScreen() {
   return (
-    <ImageBackground source={require('../assets/background.jpg')} style={styles.background}>
+    <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.container}>
         <Text style={styles.title}>Chat with EcoBot</Text>
         <Text style={styles.description}>Hey there! Ready to explore the limitless possibilities...</Text>
