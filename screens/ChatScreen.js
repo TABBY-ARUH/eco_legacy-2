@@ -7,9 +7,12 @@ export default function ChatScreen({ navigation }) {
     <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.overlay}>
         <View style={styles.container}>
-          <Text style={styles.title}>Chat with EcoBot</Text>
+          <View style={styles.header}>
+            <MaterialIcons name="chat" size={24} color="white" />
+            <Text style={styles.title}>Chat with EcoBot</Text>
+          </View>
           <Text style={styles.description}>
-            "Hey there! Ready to explore the limitless possibilities with me, your AI buddy? 🚀 Let's unlock the power of Internet Computer, where decentralized apps, smart contracts, DeFi, and more await! Together, we'll dive into a world of innovation and endless opportunities. Let's get started on our journey to the future!"
+            Hey there! Ready to explore the limitless possibilities with me, your AI buddy? 🚀 Let's unlock the power of Internet Computer, where decentralized apps, smart contracts, DeFi, and more await! Together, we'll dive into a world of innovation and endless opportunities. Let's get started on our journey to the future!
           </Text>
         </View>
         <View style={styles.inputContainer}>
@@ -18,9 +21,6 @@ export default function ChatScreen({ navigation }) {
             <MaterialIcons name="send" size={24} color="white" />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('Next')}>
-          <Text style={styles.nextButtonText}>Go to Next Screen ➔</Text>
-        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -43,12 +43,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   title: {
     fontSize: 24,
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20,
+    marginLeft: 10,
   },
   description: {
     fontSize: 18,
@@ -76,18 +81,5 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#003f5c',
     borderRadius: 25,
-  },
-  nextButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 20,
-  },
-  nextButtonText: {
-    fontSize: 18,
-    color: '#000',
   },
 });

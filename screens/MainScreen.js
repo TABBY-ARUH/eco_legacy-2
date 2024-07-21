@@ -1,8 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Alert, Linking } from 'react-native';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 
 export default function MainScreen({ navigation }) {
+  const handleExplorePress = () => {
+    // navigate to an Explore screen or show an alert
+    Alert.alert("Explore App", "This button will take you to the Explore App section.");
+  };
+
+  const handleDownloadPress = () => {
+    //  open a download URL
+    const url = "https://example.com/download"; // Replace with your actual download URL
+    Linking.openURL(url).catch((err) => console.error("Couldn't load page", err));
+  };
+
   return (
     <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.overlay}>
@@ -21,10 +32,10 @@ export default function MainScreen({ navigation }) {
           </TouchableOpacity>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity style={styles.footerButton} onPress={() => {}}>
+          <TouchableOpacity style={styles.footerButton} onPress={handleExplorePress}>
             <Text style={styles.footerButtonText}>Explore App</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.footerButton} onPress={() => {}}>
+          <TouchableOpacity style={styles.footerButton} onPress={handleDownloadPress}>
             <Text style={styles.footerButtonText}>Download</Text>
           </TouchableOpacity>
         </View>

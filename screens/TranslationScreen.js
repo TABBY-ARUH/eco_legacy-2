@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function TranslationScreen() {
+export default function TranslationScreen({ navigation }) {
   return (
     <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.overlay}>

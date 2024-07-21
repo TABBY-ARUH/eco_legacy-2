@@ -5,6 +5,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import MainScreen from '../screens/MainScreen';
 import ProjectScreen from '../screens/ProjectScreen';
 import ChatScreen from '../screens/ChatScreen';
+import TranslationScreen from '../screens/TranslationScreen';
 import NextScreen from '../screens/NextScreen';
 
 const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ export default function AppNavigator() {
         <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Project" component={ProjectScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Translation" component={TranslationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Next" component={NextScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
