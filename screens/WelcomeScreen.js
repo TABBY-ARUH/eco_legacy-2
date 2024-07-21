@@ -1,15 +1,11 @@
+// screens/WelcomeScreen.js
 import React from 'react';
-import { View, Text, Button, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 
 export default function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.overlay}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.backButton}>←</Text>
-          </TouchableOpacity>
-        </View>
         <View style={styles.container}>
           <Text style={styles.title}>EcoLegacy</Text>
           <Text style={styles.description}>
@@ -37,15 +33,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: 'rgba(0,0,0,0.5)',
-  },
-  header: {
-    position: 'absolute',
-    top: 40,
-    left: 20,
-  },
-  backButton: {
-    fontSize: 24,
-    color: 'white',
   },
   container: {
     flex: 1,
