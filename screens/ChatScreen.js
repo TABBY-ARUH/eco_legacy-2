@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function ChatScreen() {
+export default function ChatScreen({ navigation }) {
   return (
     <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.overlay}>
@@ -18,6 +18,9 @@ export default function ChatScreen() {
             <MaterialIcons name="send" size={24} color="white" />
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('Next')}>
+          <Text style={styles.nextButtonText}>Go to Next Screen ➔</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -73,5 +76,18 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#003f5c',
     borderRadius: 25,
+  },
+  nextButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 20,
+  },
+  nextButtonText: {
+    fontSize: 18,
+    color: '#000',
   },
 });
