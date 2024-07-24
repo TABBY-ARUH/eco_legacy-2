@@ -1,7 +1,35 @@
-import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput, Alert } from 'react-native';
 
 export default function WelcomeScreen({ navigation }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleAuth = () => {
+    const url = isLogin ? 'http://localhost:8081/login' : 'http://localhost:8081/register';
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result) {
+          Alert.alert(isLogin ? 'Login successful' : 'Registration successful');
+          navigation.navigate('Main');
+        } else {
+          Alert.alert('Error', data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        Alert.alert('Error', 'An error occurred. Please try again.');
+      });
+  };
+
   return (
     <ImageBackground source={require('../assets/pexels-fotios-photos-2304253.jpg')} style={styles.background}>
       <View style={styles.overlay}>
@@ -10,11 +38,26 @@ export default function WelcomeScreen({ navigation }) {
           <Text style={styles.description}>
             Welcome to EcoLegacy! Discover sustainability initiatives and make a positive impact on the environment.
           </Text>
-          <Text style={styles.subDescription}>
-            Explore projects, chat with EcoBot, translate content, and more...
-          </Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
-            <Text style={styles.buttonText}>Get Started ➔</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Username"
+            value={username}
+            onChangeText={setUsername}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity style={styles.button} onPress={handleAuth}>
+            <Text style={styles.buttonText}>{isLogin ? 'Login' : 'Register'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.switchButton} onPress={() => setIsLogin(!isLogin)}>
+            <Text style={styles.switchButtonText}>
+              {isLogin ? 'Switch to Register' : 'Switch to Login'}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -52,20 +95,29 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 10,
   },
-  subDescription: {
-    fontSize: 16,
-    color: 'white',
-    textAlign: 'center',
-    marginBottom: 40,
+  input: {
+    backgroundColor: 'white',
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 5,
+    width: '80%',
   },
   button: {
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 25,
+    marginVertical: 10,
   },
   buttonText: {
     fontSize: 18,
     color: '#000',
+  },
+  switchButton: {
+    marginTop: 10,
+  },
+  switchButtonText: {
+    fontSize: 16,
+    color: 'white',
   },
 });
