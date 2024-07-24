@@ -4,11 +4,9 @@ import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput, A
 export default function WelcomeScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(true);
 
-  const handleAuth = () => {
-    const url = isLogin ? 'http://localhost:8081/login' : 'http://localhost:8081/register';
-    fetch(url, {
+  const handleLogin = () => {
+    fetch('http://localhost:8081/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -18,7 +16,7 @@ export default function WelcomeScreen({ navigation }) {
       .then(response => response.json())
       .then(data => {
         if (data.result) {
-          Alert.alert(isLogin ? 'Login successful' : 'Registration successful');
+          Alert.alert('Login successful');
           navigation.navigate('Main');
         } else {
           Alert.alert('Error', data.error);
@@ -51,13 +49,11 @@ export default function WelcomeScreen({ navigation }) {
             value={password}
             onChangeText={setPassword}
           />
-          <TouchableOpacity style={styles.button} onPress={handleAuth}>
-            <Text style={styles.buttonText}>{isLogin ? 'Login' : 'Register'}</Text>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.switchButton} onPress={() => setIsLogin(!isLogin)}>
-            <Text style={styles.switchButtonText}>
-              {isLogin ? 'Switch to Register' : 'Switch to Login'}
-            </Text>
+          <TouchableOpacity style={styles.switchButton} onPress={() => navigation.navigate('Register')}>
+            <Text style={styles.switchButtonText}>Don't have an account? Register</Text>
           </TouchableOpacity>
         </View>
       </View>
