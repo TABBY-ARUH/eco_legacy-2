@@ -13,13 +13,26 @@ export default function RegisterScreen({ navigation }) {
       },
       body: JSON.stringify({ username, password }),
     })
-      .then(response => response.json())
+      .then(response => {
+        // Check the response type and handle accordingly
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return response.json();
+        } else {
+          return response.text().then(text => {
+            console.error('Unexpected response format:', text);
+            return { error: 'Unexpected response format', details: text };
+          });
+        }
+      })
       .then(data => {
+        console.log('Response data:', data); // Log the response data
         if (data.result) {
           Alert.alert('Registration successful');
           navigation.navigate('Welcome');
         } else {
-          Alert.alert('Error', data.error);
+          console.error('Error:', data.error || data.details); // Log the error details
+          Alert.alert('Error', data.error || 'Unexpected response from server. Please try again.');
         }
       })
       .catch(error => {
