@@ -1,0 +1,9 @@
+0000000000000000000000000000000000000000 2e48dca601635630b8dbb1c5ed26a11a3ec939db TABBY-ARUH <cheminingnelly@gmail.com> 1711914516 +0300	commit (initial): Initial commit
+2e48dca601635630b8dbb1c5ed26a11a3ec939db e02713ed82d747817b25b764cd9c06c366a82a46 TABBY-ARUH <cheminingnelly@gmail.com> 1711999817 +0300	commit: Updated lib.rs, cargo.toml, dfx.json, and eco_legacy.did
+e02713ed82d747817b25b764cd9c06c366a82a46 5338046b1598e1dd0cb6e1536e7019642ef963d3 TABBY-ARUH <cheminingnelly@gmail.com> 1712685161 +0300	commit: move the codes to main
+5338046b1598e1dd0cb6e1536e7019642ef963d3 0000000000000000000000000000000000000000 TABBY-ARUH <cheminingnelly@gmail.com> 1712685353 +0300	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 5338046b1598e1dd0cb6e1536e7019642ef963d3 TABBY-ARUH <cheminingnelly@gmail.com> 1712685353 +0300	Branch: renamed refs/heads/master to refs/heads/main
+5338046b1598e1dd0cb6e1536e7019642ef963d3 5338046b1598e1dd0cb6e1536e7019642ef963d3 TABBY-ARUH <cheminingnelly@gmail.com> 1712685419 +0300	checkout: moving from main to main
+5338046b1598e1dd0cb6e1536e7019642ef963d3 96eacbe7c4b079eda167aaf2876844e2810d0871 TABBY-ARUH <cheminingnelly@gmail.com> 1712685735 +0300	merge origin/main: Merge made by the 'ort' strategy.
+96eacbe7c4b079eda167aaf2876844e2810d0871 8a5ffeaac10a67b18aacac9e21f6faf8e2defaee TABBY-ARUH <cheminingnelly@gmail.com> 1712689863 +0300	commit: add frontend
+8a5ffeaac10a67b18aacac9e21f6faf8e2defaee c0d8261862d2ff78b9dc59af1c55a9f5a4e5953d TABBY-ARUH <cheminingnelly@gmail.com> 1712872836 +0300	commit: Initial commit
