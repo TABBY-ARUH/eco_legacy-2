@@ -1,23 +1,22 @@
 {
-    "canisters": {
-      "eco_legacy": {
-        "candid": "src/eco_legacy.did",
-        "package": "eco_legacy",
-        "type": "rust"
-      },
-      "eco_legacy_backend": {
-        "candid": "src/eco_legacy_backend.did",
-        "package": "eco_legacy_backend",
-        "type": "rust"
-      }
+  "canisters": {
+    "eco_legacy": {
+      "candid": "src/eco_legacy.did",
+      "package": "eco_legacy",
+      "type": "rust"
     },
-    "defaults": {
-      "build": {
-        "args": "",
-        "packtool": ""
-      }
-    },
-    "output_env_file": ".env",
-    "version": 1
-  }
-  
+    "eco_legacy_backend": {
+      "candid": "src/eco_legacy_backend.did",
+      "package": "eco_legacy_backend",
+      "type": "rust"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

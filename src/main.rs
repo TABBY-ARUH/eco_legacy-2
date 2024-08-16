@@ -1,8 +1,7 @@
+
 use warp::Filter;
-use eco_legacy::lib_logic::{ECO_LEGACY_INSTANCE};
+use eco_legacy::lib_logic::ECO_LEGACY_INSTANCE;
 use serde_json::json;
-use std::sync::Arc;
-use tokio::sync::Mutex;
 
 #[tokio::main]
 async fn main() {
@@ -39,5 +38,3 @@ async fn main() {
     // Start the server
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
-
-

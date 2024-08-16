@@ -4,21 +4,26 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-warp = "0.3" 
+warp = "0.3.7"  # Updated version, without specifying features
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-lazy_static = "1.4" # Or another appropriate version
-bytes = "1.6"
+lazy_static = "1.4"
+bytes = "1.7"
+getrandom = "0.2"
+wasm-bindgen = "0.2"
 
-[target.'cfg(target_arch = "wasm32")'.dependencies]
-getrandom = { version = "0.2", features = ["js"] }
+
+
 
 [lib]
 name = "eco_legacy"
-path = "src/lib_logic.rs"
-crate-type = ["cdylib"]  
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
 
 [[bin]]
 name = "eco_legacy_bin"
-path = "src/main.rs"
+path = "src/main.rs"  # Path to the main file for binary

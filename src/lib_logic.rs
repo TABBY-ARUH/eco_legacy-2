@@ -1,4 +1,3 @@
-use serde_json::Value;
 use lazy_static::lazy_static;
 use std::sync::Arc;
 use tokio::sync::Mutex;
@@ -20,5 +19,3 @@ impl EcoLegacy {
 lazy_static! {
     pub static ref ECO_LEGACY_INSTANCE: Arc<Mutex<EcoLegacy>> = Arc::new(Mutex::new(EcoLegacy));
 }
-
-
