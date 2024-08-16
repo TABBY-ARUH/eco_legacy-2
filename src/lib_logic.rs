@@ -1,6 +1,4 @@
-use bcrypt::{hash, verify, DEFAULT_COST};
-use jsonwebtoken::{encode, Header, EncodingKey};
-use serde::{Deserialize, Serialize};
+use serde_json::Value;
 use lazy_static::lazy_static;
 use std::sync::Arc;
 use tokio::sync::Mutex;
@@ -81,12 +79,4 @@ lazy_static! {
     pub static ref ECO_LEGACY_INSTANCE: Arc<Mutex<EcoLegacy>> = Arc::new(Mutex::new(EcoLegacy));
 }
 
-#[derive(Debug)]
-pub enum AppError {
-    DatabaseError(String),
-    AuthenticationError(String),
-    ValidationError(String),
-}
-
-impl warp::reject::Reject for AppError {}
 

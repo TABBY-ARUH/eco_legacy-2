@@ -1,5 +1,6 @@
 {
   "canisters": {
+<<<<<<< HEAD
       "eco_legacy": {
           "candid": "src/eco_legacy.did",
           "package": "eco_legacy",
@@ -11,8 +12,29 @@
           "args": "",
           "packtool": ""
       }
+=======
+    "eco_legacy": {
+      "candid": "src/eco_legacy.did",
+      "package": "eco_legacy",
+      "type": "rust"
+    },
+    "eco_legacy_backend": {
+      "candid": "src/eco_legacy_backend.did",
+      "package": "eco_legacy_backend",
+      "type": "rust"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+>>>>>>> 7767f56 (Add all files)
   },
   "output_env_file": ".env",
   "version": 1
 }
+<<<<<<< HEAD
   
+=======
+>>>>>>> 7767f56 (Add all files)

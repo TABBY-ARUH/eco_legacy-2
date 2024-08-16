@@ -1,7 +1,13 @@
+
 use warp::Filter;
+<<<<<<< HEAD
 use serde_json::json;
 use crate::lib_logic::ECO_LEGACY_INSTANCE;
 use crate::db::{Project, establish_connection};
+=======
+use eco_legacy::lib_logic::ECO_LEGACY_INSTANCE;
+use serde_json::json;
+>>>>>>> 7767f56 (Add all files)
 
 #[tokio::main]
 async fn main() {
@@ -82,4 +88,7 @@ async fn main() {
     // Start the server
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7767f56 (Add all files)
