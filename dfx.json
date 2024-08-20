@@ -1,36 +1,18 @@
 {
   "canisters": {
-    "ecolegacy": {
-      "type": "assets",
-      "source": [
-        "dist"
-      ]
-    },
-    "eco_legacy": {
-      "main": "src/main.rs",
-      "type": "custom",
-      "candid": "src/eco_legacy.did",
-      "wasm": "eco_legacy.wasm",
-      "package": "eco_legacy"
-    }
-  },
-  "networks": {
-    "local": {
-      "bind": "127.0.0.1:8000",
-      "type": "ephemeral"
-    },
-    "ic": {
-      "providers": [
-        "https://mainnet.dfinity.network"
-      ]
-    }
+      "eco_legacy": {
+          "candid": "src/eco_legacy.did",
+          "package": "eco_legacy",
+          "type": "rust"
+      }
   },
   "defaults": {
-    "build": {
-      "packtool": "@dfinity/webpack-plugin",
-      "args": ""
-    }
+      "build": {
+          "args": "",
+          "packtool": ""
+      }
   },
   "output_env_file": ".env",
   "version": 1
 }
+  

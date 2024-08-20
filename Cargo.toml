@@ -1,14 +1,32 @@
 [package]
 name = "eco_legacy"
 version = "0.1.0"
-edition = "2018"
-
-[lib]
-crate-type = ["cdylib"]
+edition = "2021"
 
 [dependencies]
-ic-cdk = "0.13.1"
-ic-cdk-macros = "0.9.0"
+warp = "0.3"
+tokio = { version = "1", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
-lazy_static = "1.4"
-candid = "0.10.6"
+serde_json = "1.0"
+lazy_static = "1.5"
+bcrypt = "0.12"
+jsonwebtoken = "8.3"
+log = "0.4"
+env_logger = "0.11"
+chrono = "0.4"
+diesel = { version = "2.1", features = ["sqlite"] }
+dotenv = "0.15"
+ipfs-api = "0.4"  # Hypothetical crate for IPFS interaction
+ic-cdk = "0.2"    # Hypothetical crate for ICP interaction
+
+[lib]
+name = "eco_legacy"
+path = "src/lib_logic.rs"
+crate-type = ["cdylib"]
+
+[[bin]]
+name = "eco_legacy_bin"
+path = "src/main.rs"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.2", features = ["js"] }

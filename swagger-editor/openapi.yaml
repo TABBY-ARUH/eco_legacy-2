@@ -1,0 +1,347 @@
+openapi: 3.0.3
+info:
+  title: EcoLegacy API
+  description: |
+    This is the API documentation for the EcoLegacy backend. The backend is built using Rust and the Warp framework for the web server. It handles user registration and login, provides various endpoints for interacting with sustainability projects, includes chatbot functionality for real-time assistance, and supports language translation.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /register:
+    post:ls
+      summary: Register a new user
+      description: Register a new user by providing a username and password.
+      requestBody:
+        description: User registration details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The username of the new user.
+                password:
+                  type: string
+                  description: The password for the new user.
+              required:
+                - username
+                - password
+        required: true
+      responses:
+        '200':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: Success message with the registered user's details.
+          examples:
+            application/json:
+              summary: Successful Registration
+              value:
+                result: "User user1 registered successfully"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message detailing why the request failed.
+          examples:
+            application/json:
+              summary: Invalid Input
+              value:
+                error: "Invalid username or password format."
+
+  /login:
+    post:
+      summary: Login an existing user
+      description: Authenticate a user by providing a username and password.
+      requestBody:
+        description: User login details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The username of the user.
+                password:
+                  type: string
+                  description: The password for the user.
+              required:
+                - username
+                - password
+        required: true
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: Success message with login details.
+          examples:
+            application/json:
+              summary: Successful Login
+              value:
+                result: "Login successful for user user1."
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message detailing why authentication failed.
+          examples:
+            application/json:
+              summary: Invalid Credentials
+              value:
+                error: "Incorrect username or password."
+
+  /projects:
+    get:
+      summary: Retrieve all sustainability projects
+      description: Get a list of all sustainability projects.
+      parameters:
+        - name: limit
+          in: query
+          description: Number of items to return per page.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          description: Number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: List of sustainability projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Unique identifier for the project.
+                    name:
+                      type: string
+                      description: Name of the project.
+                    description:
+                      type: string
+                      description: Description of the project.
+                    status:
+                      type: string
+                      description: Current status of the project.
+          examples:
+            application/json:
+              summary: List of Projects
+              value:
+                - id: "1"
+                  name: "Solar Panel Installation"
+                  description: "A project to install solar panels in local schools."
+                  status: "ongoing"
+                - id: "2"
+                  name: "Community Cleanup"
+                  description: "A community event to clean up local parks."
+                  status: "completed"
+
+    post:
+      summary: Create a new sustainability project
+      description: Add a new project to the list of sustainability projects.
+      requestBody:
+        description: New project details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the new project.
+                description:
+                  type: string
+                  description: Description of the new project.
+                status:
+                  type: string
+                  description: Current status of the new project.
+              required:
+                - name
+                - description
+                - status
+        required: true
+      responses:
+        '201':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the new project.
+                  name:
+                    type: string
+                    description: Name of the project.
+                  description:
+                    type: string
+                    description: Description of the project.
+                  status:
+                    type: string
+                    description: Current status of the project.
+          examples:
+            application/json:
+              summary: Project Created
+              value:
+                id: "3"
+                name: "Tree Planting Drive"
+                description: "A project to plant trees in urban areas."
+                status: "planned"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message detailing why the request failed.
+          examples:
+            application/json:
+              summary: Invalid Input
+              value:
+                error: "Missing required fields or incorrect data format."
+
+  /chatbot:
+    post:
+      summary: Chat with the chatbot
+      description: Send a message to the chatbot and receive a response.
+      requestBody:
+        description: Message to the chatbot
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: Unique identifier for the user.
+                message:
+                  type: string
+                  description: Message to send to the chatbot.
+              required:
+                - user_id
+                - message
+        required: true
+      responses:
+        '200':
+          description: Chatbot response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                    description: Response from the chatbot.
+          examples:
+            application/json:
+              summary: Chatbot Response
+              value:
+                response: "Hello! How can I assist you today?"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message detailing why the request failed.
+          examples:
+            application/json:
+              summary: Invalid Input
+              value:
+                error: "Message is missing or invalid user_id."
+
+  /translate:
+    post:
+      summary: Translate text
+      description: Translate text from one language to another.
+      requestBody:
+        description: Translation request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Text to be translated.
+                source_language:
+                  type: string
+                  description: Language code of the source language (e.g., "en").
+                target_language:
+                  type: string
+                  description: Language code of the target language (e.g., "es").
+              required:
+                - text
+                - source_language
+                - target_language
+        required: true
+      responses:
+        '200':
+          description: Translation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  translated_text:
+                    type: string
+                    description: The translated text.
+          examples:
+            application/json:
+              summary: Translation Result
+              value:
+                translated_text: "Hola, ¿cómo puedo ayudarte hoy?"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message detailing why the request failed.
+          examples:
+            application/json:
+              summary: Invalid Input
+              value:
+                error: "Text or language codes are missing or invalid."
+

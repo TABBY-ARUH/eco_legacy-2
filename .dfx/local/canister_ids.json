@@ -1,8 +1,8 @@
 {
-  "__Candid_UI": {
-    "local": "a3shf-5eaaa-aaaaa-qaafa-cai"
-  },
   "eco_legacy": {
-    "local": "asrmz-lmaaa-aaaaa-qaaeq-cai"
+    "local": "be2us-64aaa-aaaaa-qaabq-cai"
+  },
+  "eco_legacy_backend": {
+    "local": "br5f7-7uaaa-aaaaa-qaaca-cai"
   }
 }

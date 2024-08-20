@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/eco_legacy_backend"
+]
+resolver = "2"
