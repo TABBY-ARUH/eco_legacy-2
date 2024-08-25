@@ -1,22 +1,23 @@
 {
-  "canisters": {
-    "eco_legacy": {
-      "candid": "src/eco_legacy.did",
-      "package": "eco_legacy",
-      "type": "rust"
+    "version": 1,
+    "networks": {
+      "local": {
+        "url": "http://127.0.0.1:8000"
+      },
+      "ic": {
+        "url": "https://cloudflare-ipfs.com/ipfs/"
+      }
     },
-    "eco_legacy_backend": {
-      "candid": "src/eco_legacy_backend.did",
-      "package": "eco_legacy_backend",
-      "type": "rust"
+    "defaults": {
+      "network": "local"
+    },
+    "canisters": {
+      "backend": {
+        "type": "rust",
+        "package": "src",  
+        "candid": "src/eco_legacy.did"  
+      }
     }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
-}
+  }
+  
+  

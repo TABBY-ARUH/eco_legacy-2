@@ -1,11 +1,16 @@
-type SustainabilityProject = record {
-  id: nat32;
-  name: text;
-  description: text;
-};
+     type SustainabilityProject = record {
+       id: nat32;
+       name: text;
+       description: text;
+     };
 
-service : {
-  get_projects: () -> (vec SustainabilityProject) query;
-  add_project: (SustainabilityProject) -> ();
-}
+     service : {
+       "register_user": (text, text, principal) -> (bool);
+       "login_user": (text, text) -> (opt principal);
+       "create_proposal": (text, text, principal) -> (nat64);
+       "vote_on_proposal": (nat64, bool) -> (bool);
+       "get_projects": () -> (vec SustainabilityProject) query;
+       "add_project": (SustainabilityProject) -> ();
+     }
+     
 

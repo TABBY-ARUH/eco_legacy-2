@@ -1,0 +1,7 @@
+     service : {
+       "register_user": (text, text, principal) -> (bool);
+       "login_user": (text, text) -> (opt principal);
+       "create_proposal": (text, text, principal) -> (nat64);
+       "vote_on_proposal": (nat64, bool) -> (bool);
+     }
+     
