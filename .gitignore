@@ -1,2 +1,28 @@
 node_modules
 node_modules
+# Ignore DFX and build artifacts
+.dfx/
+*.wasm
+*.wasm.gz
+*.log
+.cache/
+.target/
+
+# Ignore node_modules (JavaScript/TypeScript dependencies)
+node_modules/
+
+# Ignore Rust artifacts
+/target/
+Cargo.lock
+
+# Ignore editor and OS-specific files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore test outputs and temporary files
+/tests/
+*.tmp
+
